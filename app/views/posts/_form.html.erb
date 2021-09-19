@@ -23,10 +23,11 @@
   <div class="mb-3">
     <%= f.label :body, class: 'form-label' %>
     <%= f.text_area :body, class: 'form-control' %>
+    <%#= f.trix_editor :body, class: 'form-control' %>
   </div>
 
   <div class="mb-3">
-    <%= f.file_field :image, class: 'form-control' %>
+    <%= f.file_field :image, class: 'editor' %>
   </div>
 
   <div class="mb-3">
