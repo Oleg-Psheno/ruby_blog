@@ -1,0 +1,6 @@
+ru:
+  common:
+    errors: 'Ошибки заполнения формы'
+  posts:
+    new:
+      title: 'Новая статья'
