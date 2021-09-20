@@ -30,7 +30,9 @@
         <% if user_signed_in? %>
         <%= current_user.email %>
           <%#= current_user.roles.map(&:name).map{ |t|  t}.join(' ') %>
-          <%#= current_user.roles.map(&:name).map{ |t|  t}.join(' ') %>
+            <% if current_user.has_role? :admin %>
+              <%= link_to 'Войти в админку', admin_root_path %>
+            <% end %>
             <%= link_to 'Выйти', destroy_user_session_path, method: 'DELETE', class: 'btn btn-primary pull-xs-right' %>
           <% else %>
             <%= link_to 'Войти', new_user_session_path, class: 'btn btn-primary pull-xs-right' %>
