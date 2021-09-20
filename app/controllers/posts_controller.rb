@@ -36,8 +36,10 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post.destroy
-    redirect_to posts_path, success: "Post deleted"
+    if current_user.has_role? :admin
+      @post.destroy
+      redirect_to posts_path, success: "Post deleted"
+    end
   end
 
   private
