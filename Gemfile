@@ -5,11 +5,15 @@ ruby '2.6.3'
 
 gem 'trix'
 
+gem 'devise'
+gem 'activeadmin'
+
 gem 'carrierwave', '~> 2.0'
 gem "mini_magick"
 
 gem 'bootstrap', '~> 5.1.0'
 gem 'jquery-rails'
+gem 'rolify'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'

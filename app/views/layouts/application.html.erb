@@ -27,10 +27,30 @@
             <a class="nav-link" href="#">Contacts</a>
           </li>
         </ul>
+        <% if user_signed_in? %>
+        <%= current_user.email %>
+          <%#= current_user.roles.map(&:name).map{ |t|  t}.join(' ') %>
+            <% if current_user.has_role? :admin %>
+              <%= link_to 'Войти в админку', admin_root_path %>
+            <% end %>
+            <%= link_to 'Выйти', destroy_user_session_path, method: 'DELETE', class: 'btn btn-primary pull-xs-right' %>
+          <% else %>
+            <%= link_to 'Войти', new_user_session_path, class: 'btn btn-primary pull-xs-right' %>
+        <% end %>
+
         <%= link_to 'Create new post', new_post_path, class: 'btn btn-outline-primary pull-xs-right' %>
       </div>
     </div>
   </nav>
+
+     <div class="container main">
+       <div class="col-md-12">
+         <div class="row">
+     <p class="alert alert-info"><%= alert %></p>
+         </div>
+       </div>
+     </div>
+
 
      <div class="container main">
        <div class="col-md-12">

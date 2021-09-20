@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy, :create]
 
   def index
     @posts = Post.all
@@ -35,12 +36,16 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post.destroy
-    redirect_to posts_path, success: "Post deleted"
+    if current_user.has_role? :admin
+      @post.destroy
+      redirect_to posts_path, success: "Post deleted"
+    else
+      flash[:danger] = "У вас нет прав"
+      render :show
+    end
   end
 
   private
-
   def set_post
     @post = Post.find(params[:id])
   end
