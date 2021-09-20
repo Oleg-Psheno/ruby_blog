@@ -39,11 +39,13 @@ class PostsController < ApplicationController
     if current_user.has_role? :admin
       @post.destroy
       redirect_to posts_path, success: "Post deleted"
+    else
+      flash[:danger] = "У вас нет прав"
+      render :show
     end
   end
 
   private
-
   def set_post
     @post = Post.find(params[:id])
   end

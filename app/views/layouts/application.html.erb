@@ -29,6 +29,8 @@
         </ul>
         <% if user_signed_in? %>
         <%= current_user.email %>
+          <%#= current_user.roles.map(&:name).map{ |t|  t}.join(' ') %>
+          <%#= current_user.roles.map(&:name).map{ |t|  t}.join(' ') %>
             <%= link_to 'Выйти', destroy_user_session_path, method: 'DELETE', class: 'btn btn-primary pull-xs-right' %>
           <% else %>
             <%= link_to 'Войти', new_user_session_path, class: 'btn btn-primary pull-xs-right' %>
@@ -51,11 +53,11 @@
      <div class="container main">
        <div class="col-md-12">
          <div class="row">
-           <%# flash.each do |name,message| %>
-<!--            <div class="alert alert-<%#= name %>">-->
-              <%#= message %>
-<!--            </div>-->
-           <%# end %>
+           <% flash.each do |name,message| %>
+            <div class="alert alert-<%= name %>">
+              <%= message %>
+            </div>
+           <% end %>
          </div>
        </div>
 
