@@ -5,6 +5,9 @@ ruby '2.6.3'
 
 gem 'trix'
 
+gem 'devise'
+
+
 gem 'carrierwave', '~> 2.0'
 gem "mini_magick"
 
